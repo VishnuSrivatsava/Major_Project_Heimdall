@@ -1,0 +1,119 @@
+{% extends 'SProvider/design1.html' %}
+{% load static %}
+{% block researchblock %}
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #000000;
+        font-family: 'Poppins', sans-serif;
+    }
+    .container-fluid {
+        padding: 50px;
+        position: relative;
+        z-index: 1;
+    }
+    .container {
+        background: rgba(13, 17, 63, 0.7);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .chart-title {
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background: linear-gradient(45deg, #ffffff, #00ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    #chartContainer {
+        background: rgba(255,255,255,0.1);
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        margin: 20px auto;
+        height: 400px;
+        width: 80%;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="container">
+        <h2 class="chart-title">Cyber Attack Analysis</h2>
+        <div id="chartContainer"></div>
+    </div>
+</div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+window.onload = function() {
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        theme: "dark2",
+        backgroundColor: "transparent",
+        title: {
+            text: "",
+            fontFamily: "Montserrat",
+            fontColor: "#ffffff"
+        },
+        axisX: {
+            labelFontFamily: "Poppins",
+            labelFontColor: "#ffffff",
+            lineColor: "rgba(255,255,255,0.2)",
+            tickColor: "rgba(255,255,255,0.2)",
+            gridColor: "rgba(255,255,255,0.1)"
+        },
+        axisY: {
+            labelFontFamily: "Poppins",
+            labelFontColor: "#ffffff",
+            lineColor: "rgba(255,255,255,0.2)",
+            tickColor: "rgba(255,255,255,0.2)",
+            gridColor: "rgba(255,255,255,0.1)"
+        },
+        data: [{
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "Poppins",
+            indexLabelFontColor: "#ffffff",
+            color: "rgba(0,255,255,0.7)",
+            dataPoints: [
+                {% for o in form %}
+                    {y: {{o.dcount}}, label: "{{o.names}}"},
+                {% endfor %}
+            ]
+        }]
+    });
+    chart.render();
+}
+</script>
+
+{% endblock %}

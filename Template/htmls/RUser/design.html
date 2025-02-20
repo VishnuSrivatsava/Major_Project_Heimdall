@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote User</title>
+<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+      body{
+        background: url("{% static 'bg.jpg' %}");
+        background-size: cover;
+        font-family: 'Russo One', sans-serif;
+        background-color: #000000;
+      }
+    h1{
+        color: #ffffff;
+        margin: 20px 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        position: relative;
+        z-index: 2;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background: linear-gradient(45deg, #ffffff, #00ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        padding: 10px 0;
+    }
+.topnav {
+  overflow: hidden;
+  background-color: rgba(13, 17, 63, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin: 0 20px;
+  position: relative;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topnav a {
+  float: left;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.topnav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #00ffff;
+  box-shadow: 0 4px 15px rgba(0,255,255,0.1);
+}
+
+.topnav a.active {
+  background: linear-gradient(45deg, #1a237e, #303f9f);
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+.style1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffffff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+/* Add the gradient overlay to body */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,35,126,0.9) 100%);
+    z-index: -1;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+
+<h1 align="center" class="style1">Fronesis Digital Forensics-Based Early Detection of Ongoing Cyber-Attacks</h1>
+
+<div class="topnav">
+     <a class="active" href="{% url 'Predict_early_detection_of_ongoing_cyber_attacks' %}">PREDICT ONGOING CYBER ATTACK TYPE</a>
+     <a href="{% url 'ViewYourProfile' %}">VIEW YOUR PROFILE</a>
+     <a href="{% url 'login' %}">LOGOUT</a>
+</div>
+
+<div class="mainholder">
+{% block userblock %}
+{% endblock %}
+</div>
+</body>
+</html>

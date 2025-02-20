@@ -1,0 +1,275 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<title>Login</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<head>
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+
+
+		<style>
+			body {
+				background: url("{% static 'bg.jpg' %}");
+				background-size: cover;
+				min-height: 100vh;
+				font-family: 'Poppins', sans-serif;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				position: relative;
+			}
+			
+			body::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(135deg, rgba(26,35,126,0.85) 0%, rgba(0,0,0,0.7) 100%);
+				z-index: 0;
+			}
+
+			.container-fluid {
+				padding: 70px 50px;
+				position: relative;
+				z-index: 1;
+			}
+
+			.container {
+				background: rgba(255,255,255,0.1);
+				padding: 40px;
+				border-radius: 20px;
+				box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+				border: 1px solid rgba(255, 255, 255, 0.18);
+				max-width: 900px;
+				margin: 0 auto;
+			}
+
+			#title {
+				font-family: 'Montserrat', sans-serif;
+				margin-bottom: 30px;
+				font-weight: 700;
+				color: #ffffff;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: 2rem;
+				text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+			}
+
+			.description {
+				text-align: center;
+				margin: 20px 0;
+				color: #ffffff;
+				font-size: 0.95rem;
+				line-height: 1.6;
+				font-weight: 500;
+				opacity: 0.9;
+			}
+
+			.login-section {
+				background: rgba(255,255,255,0.15);
+				padding: 35px;
+				border-radius: 16px;
+				max-width: 400px;
+				margin: 0 auto;
+				box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+				backdrop-filter: blur(4px);
+				-webkit-backdrop-filter: blur(4px);
+				border: 1px solid rgba(255, 255, 255, 0.18);
+			}
+
+			.img-container {
+				width: 100%;
+				text-align: center;
+				margin-bottom: 25px;
+				position: relative;
+			}
+
+			.img-fluid {
+				border-radius: 15px;
+				box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+				max-width: 85%;
+				height: auto;
+				margin: 0 auto;
+				display: block;
+				border: 2px solid rgba(255,255,255,0.18);
+			}
+
+			.login-title {
+				color: #ffffff;
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 600;
+				font-size: 1.5rem;
+				margin-bottom: 25px;
+				text-align: center;
+				text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+			}
+
+			.form-group input {
+				background: rgba(255,255,255,0.15);
+				padding: 15px 20px;
+				width: 100%;
+				border: 1px solid rgba(255,255,255,0.2);
+				border-radius: 12px;
+				font-size: 15px;
+				color: #ffffff;
+				transition: all 0.3s ease;
+			}
+
+			.form-group input::placeholder {
+				color: rgba(255,255,255,0.7);
+			}
+
+			.form-group input:focus {
+				background: rgba(255,255,255,0.25);
+				border-color: rgba(255,255,255,0.3);
+				box-shadow: 0 0 15px rgba(255,255,255,0.1);
+				outline: none;
+			}
+
+			.btn {
+				padding: 12px 30px;
+				border-radius: 12px;
+				margin: 8px;
+				font-weight: 500;
+				letter-spacing: 1px;
+				transition: all 0.3s ease;
+				text-transform: uppercase;
+				font-size: 14px;
+			}
+
+			.btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+			}
+
+			.btn-danger {
+				background: linear-gradient(45deg, #1a237e, #303f9f);
+				border: none;
+			}
+
+			.btn-danger:hover {
+				background: linear-gradient(45deg, #303f9f, #1a237e);
+			}
+
+			.btn-primary {
+				background: linear-gradient(45deg, #303f9f, #1976d2);
+				border: none;
+			}
+
+			.btn-success {
+				background: linear-gradient(45deg, #2e7d32, #43a047);
+				border: none;
+			}
+
+			hr {
+				border-color: rgba(255,255,255,0.1);
+				margin: 30px 0;
+			}
+
+			/* Add a subtle animation to the login form */
+			.login-section {
+				animation: fadeIn 0.5s ease-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.btn-container {
+				text-align: center;
+				margin-top: 25px;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				gap: 15px;
+				flex-wrap: wrap;
+			}
+
+			.btn-container .btn {
+				min-width: 140px;
+				padding: 12px 20px;
+				font-size: 13px;
+				white-space: nowrap;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				height: 45px;
+			}
+
+			.btn-container .btn-primary {
+				min-width: 150px;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="container-fluid">
+		<div class="container">
+			<h2 class="text-center" id="title">
+				<strong>Fronesis Digital Forensics-Based Early Detection of Ongoing Cyber-Attacks</strong>
+			</h2>
+			<p class="description">
+				<span class="style4">
+					<small id="passwordHelpInline">
+						Cyber-attack detection, cyber kill chain, cybersecurity, digital artifacts, MITRE ATT&CK,
+						ontology, rule-based reasoning.
+					</small>
+				</span>
+			</p>
+			<hr>
+			<div class="login-section">
+				<form method="POST" role="form">
+					{% csrf_token %}
+					<fieldset style="width: 100%;">
+						{% load static %}
+						<div class="img-container">
+							<img src="{% static '/login.jpg' %}" alt="Login" class="img-fluid">
+						</div>
+						<h3 class="login-title">Login Using Your Account</h3>
+						
+						<div class="form-group">
+							<input type="text" name="username" class="form-control" placeholder="User Name" required>
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" class="form-control" placeholder="Password" required>
+						</div>
+						<div class="text-center">
+							<input type="submit" name="submit1" class="btn btn-danger" value="Sign In">
+						</div>
+						
+						<div class="btn-container">
+							<a href="{% url 'serviceproviderlogin' %}" class="btn btn-primary">PROVIDER</a>
+							<a href="{% url 'Register1' %}" class="btn btn-success">REGISTER</a>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+
+	</div>
+	</body>
+
+
+</html>

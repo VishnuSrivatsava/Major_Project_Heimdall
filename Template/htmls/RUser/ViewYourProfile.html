@@ -1,0 +1,170 @@
+{% extends 'RUser/design.html' %}
+{% block userblock %}
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #000000;
+        font-family: 'Poppins', sans-serif;
+    }
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,35,126,0.9) 100%);
+        z-index: -1;
+    }
+    .container-fluid {
+        padding: 50px;
+        position: relative;
+        z-index: 1;
+    }
+    .container {
+        background: rgba(13, 17, 63, 0.7);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .profile-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+        margin-top: 20px;
+    }
+    .profile-table td {
+        padding: 20px;
+        font-size: 15px;
+        position: relative;
+    }
+    .profile-table td:first-child {
+        background: linear-gradient(45deg, #1a237e, #303f9f);
+        border-radius: 12px 0 0 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        width: 200px;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .profile-table td:last-child {
+        background: rgba(255,255,255,0.08);
+        border-radius: 0 12px 12px 0;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #00ffff;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-shadow: 0 0 10px rgba(0,255,255,0.3);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .profile-title {
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        background: linear-gradient(45deg, #ffffff, #00ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .profile-container {
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeIn 0.5s ease-out;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .profile-row {
+        transition: all 0.3s ease;
+    }
+    .profile-row:hover td:last-child {
+        background: rgba(255,255,255,0.12);
+        transform: translateX(5px);
+        box-shadow: 0 4px 20px rgba(0,255,255,0.1);
+    }
+    .profile-row:hover td:first-child {
+        background: linear-gradient(45deg, #303f9f, #1a237e);
+    }
+    
+    /* Add glow effect to the container */
+    .container::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #1a237e, #00ffff);
+        border-radius: 22px;
+        z-index: -1;
+        opacity: 0.3;
+        filter: blur(10px);
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="profile-container">
+                <h2 class="profile-title">Your Profile</h2>
+                <table class="profile-table">
+                    <tr class="profile-row">
+                        <td>Username</td>
+                        <td>{{object.username}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>Email</td>
+                        <td>{{object.email}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>Mobile Number</td>
+                        <td>{{object.phoneno}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>Gender</td>
+                        <td>{{object.gender}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>Country</td>
+                        <td>{{object.country}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>State</td>
+                        <td>{{object.state}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>City</td>
+                        <td>{{object.city}}</td>
+                    </tr>
+                    <tr class="profile-row">
+                        <td>Address</td>
+                        <td>{{object.address}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

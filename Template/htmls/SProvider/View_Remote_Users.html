@@ -1,0 +1,153 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #000000;
+        font-family: 'Poppins', sans-serif;
+    }
+    .container-fluid {
+        padding: 50px;
+        position: relative;
+        z-index: 1;
+    }
+    .container {
+        background: rgba(13, 17, 63, 0.7);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .users-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+        margin-top: 20px;
+    }
+
+    .users-table th {
+        background: linear-gradient(45deg, #1a237e, #303f9f);
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 15px;
+        text-align: center;
+        border: none;
+    }
+
+    .users-table th:first-child {
+        border-radius: 12px 0 0 12px;
+    }
+
+    .users-table th:last-child {
+        border-radius: 0 12px 12px 0;
+    }
+
+    .users-table td {
+        background: rgba(255,255,255,0.1);
+        color: #00ffff;
+        padding: 15px;
+        font-size: 14px;
+        border: none;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .users-table tr:hover td {
+        background: rgba(255,255,255,0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .users-table td:first-child {
+        border-radius: 12px 0 0 12px;
+    }
+
+    .users-table td:last-child {
+        border-radius: 0 12px 12px 0;
+    }
+
+    .section-title {
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background: linear-gradient(45deg, #ffffff, #00ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .table-container {
+        position: relative;
+        overflow-x: auto;
+        border-radius: 12px;
+        padding: 1px;
+    }
+
+    /* Custom scrollbar */
+    .table-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.1);
+        border-radius: 4px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #1a237e, #303f9f);
+        border-radius: 4px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="container">
+        <h2 class="section-title">View All Remote Users</h2>
+        <div class="table-container">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Phone No</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in objects %}
+                    <tr>
+                        <td>{{o.username}}</td>
+                        <td>{{o.email}}</td>
+                        <td>{{o.gender}}</td>
+                        <td>{{o.address}}</td>
+                        <td>{{o.phoneno}}</td>
+                        <td>{{o.country}}</td>
+                        <td>{{o.state}}</td>
+                        <td>{{o.city}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

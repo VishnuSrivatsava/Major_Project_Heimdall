@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Provider</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: url("{% static 'bg.jpg' %}");
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(26,35,126,0.9) 100%);
+            z-index: 0;
+        }
+
+        .main-title {
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ffffff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background: rgba(13, 17, 63, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            margin: 0 20px;
+            position: relative;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .topnav a {
+            float: left;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .topnav a:hover {
+            background: rgba(255,255,255,0.1);
+            color: #00ffff;
+            box-shadow: 0 4px 15px rgba(0,255,255,0.1);
+        }
+
+        .topnav a.active {
+            background: linear-gradient(45deg, #1a237e, #303f9f);
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0,255,255,0.3);
+        }
+
+        .mainholder {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+<h1 align="center" class="main-title">Fronesis Digital Forensics-Based Early Detection of Ongoing Cyber-Attacks</h1>
+
+<div class="topnav">
+    <a href="{% url 'View_Remote_Users' %}">View Remote Users</a>
+    <a href="{% url 'charts' 'line' %}">View Attack Type Results</a>
+    <a href="{% url 'charts' 'pie' %}">View Attack Type Ratio</a>
+    <a href="{% url 'Train_Test_Datasets' %}">Train Test Datasets</a>
+    <a href="{% url 'likeschart' 'bar' %}">View Prediction Results</a>
+    <a href="{% url 'Find_Early_Detection_of_Ongoing_Cyber_Attacks_Predicted_Ratio' %}">View Prediction Ratio</a>
+    <a href="{% url 'Find_Early_Detection_of_Ongoing_Cyber_Attacks_Predicted_Details' %}">View Prediction Details</a>
+    <a href="{% url 'login' %}">Logout</a>
+</div>
+
+<div class="mainholder">
+{% block researchblock %}
+{% endblock %}
+</div>
+
+</body>
+</html>
