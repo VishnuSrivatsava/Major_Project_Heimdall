@@ -36,8 +36,5 @@ urlpatterns = [
     url(r'^Find_Early_Detection_of_Ongoing_Cyber_Attacks_Predicted_Details/$', serviceprovider.Find_Early_Detection_of_Ongoing_Cyber_Attacks_Predicted_Details, name="Find_Early_Detection_of_Ongoing_Cyber_Attacks_Predicted_Details"),
     url(r'^Train_Test_Datasets/$', serviceprovider.Train_Test_Datasets, name="Train_Test_Datasets"),
     url(r'^Download_Trained_DataSets/$', serviceprovider.Download_Trained_DataSets, name="Download_Trained_DataSets"),
-
-
-
-
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'fetch_latest_threat/', remoteuser.fetch_latest_threat, name='fetch_latest_threat'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

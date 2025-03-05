@@ -193,6 +193,11 @@
 
 <div class="container-fluid">
     <div class="container">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button id="fetchLatestBtn" class="submit-btn" style="width: auto; margin-right: 15px;">
+                Fetch Latest Threat
+            </button>
+        </div>
         <form role="form" method="POST">
             {% csrf_token %}
             <h2 class="section-title">Predict Cyber Threat Type</h2>
@@ -253,4 +258,28 @@
         </form>
     </div>
 </div>
+
+<script>
+document.getElementById('fetchLatestBtn').addEventListener('click', function() {
+    fetch('/fetch_latest_threat/')  // We'll create this URL endpoint
+        .then(response => response.json())
+        .then(data => {
+            // Populate form fields with the data
+            document.querySelector('input[name="cve_id"]').value = data.cve_id;
+            document.querySelector('input[name="vendor_project"]').value = data.vendor_project;
+            document.querySelector('input[name="product"]').value = data.product;
+            document.querySelector('input[name="threat_name"]').value = data.threat_name;
+            document.querySelector('input[name="date_added"]').value = data.date_added;
+            document.querySelector('input[name="short_description"]').value = data.short_description;
+            document.querySelector('input[name="required_action"]').value = data.required_action;
+            document.querySelector('input[name="due_date"]').value = data.due_date;
+            document.querySelector('input[name="pub_date"]').value = data.pub_date;
+            document.querySelector('input[name="cvss"]').value = data.cvss;
+            document.querySelector('input[name="cwe"]').value = data.cwe;
+            document.querySelector('input[name="Type"]').value = data.type;
+            document.querySelector('input[name="complexity"]').value = data.complexity;
+        })
+        .catch(error => console.error('Error:', error));
+});
+</script>
 {% endblock %}

@@ -18,6 +18,8 @@ from sklearn.ensemble import RandomForestClassifier
 
 # Create your views here.
 from Remote_User.models import ClientRegister_Model,detection_of_ongoing_cyber_attacks,cyber_threat_type_ratio
+from django.http import JsonResponse
+from .models import CapturedThreat
 
 def login(request):
 
@@ -208,6 +210,30 @@ def Predict_early_detection_of_ongoing_cyber_attacks(request):
 
         return render(request, 'RUser/Predict_early_detection_of_ongoing_cyber_attacks.html',{'objs': val})
     return render(request, 'RUser/Predict_early_detection_of_ongoing_cyber_attacks.html')
+
+def fetch_latest_threat(request):
+    # Get the latest threat from the database
+    latest_threat = CapturedThreat.objects.order_by('-capture_time').first()
+    
+    if latest_threat:
+        data = {
+            'cve_id': latest_threat.cve_id,
+            'vendor_project': latest_threat.vendor_project,
+            'product': latest_threat.product,
+            'threat_name': latest_threat.threat_name,
+            'date_added': latest_threat.date_added,
+            'short_description': latest_threat.short_description,
+            'required_action': latest_threat.required_action,
+            'due_date': latest_threat.due_date,
+            'pub_date': latest_threat.pub_date,
+            'cvss': str(latest_threat.cvss),
+            'cwe': latest_threat.cwe,
+            'type': latest_threat.type,
+            'complexity': latest_threat.complexity,
+        }
+        return JsonResponse(data)
+    else:
+        return JsonResponse({'error': 'No threats found'}, status=404)
 
 
 
